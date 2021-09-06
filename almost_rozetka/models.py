@@ -31,7 +31,7 @@ class CustomUser(AbstractUser):
 
 class Company(models.Model):
     name = models.CharField("company", max_length=250)
-    city = models.OneToOneField(City, on_delete=models.CASCADE)
+    city = models.OneToOneField(City, on_delete=models.CASCADE, primary_key=True,)
 
     class Meta:
         verbose_name = 'Company'
