@@ -4,5 +4,6 @@ exclude =
     .git,
     venv,
     __pycache__,
-    .idea
+    .idea,
+    migrations
 max-line-length = 100

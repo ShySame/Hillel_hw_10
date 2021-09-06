@@ -1,7 +1,8 @@
+from almost_rozetka.models import City, Company, CustomUser, Product
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from almost_rozetka.models import CustomUser, City, Company, Product
-from django.utils.translation import gettext, gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 @admin.register(City)
