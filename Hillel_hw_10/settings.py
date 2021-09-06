@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--1^b%^pxmuz^tvx1f!tu7*w8i2i+o5u(r9v1nb_9je#f4x56rr'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY",
+                            'django-insecure--1^b%^pxmuz^tvx1f!tu7*w8i2i+o5u(r9v1nb_9je#f4x56rr')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'almost_rozetka.apps.AlmostRozetkaConfig',
 ]
 
@@ -55,8 +57,7 @@ ROOT_URLCONF = 'Hillel_hw_10.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,14 +72,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Hillel_hw_10.wsgi.application'
 
-
+AUTH_USER_MODEL = 'almost_rozetka.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'identifier.sqlite',
     }
 }
 
